@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pulse Chat — Real-time messaging</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="authView" class="auth-card">
+      <div class="brand-mark">✦</div>
+      <p class="eyebrow">PULSE / REAL-TIME MESSAGING</p>
+      <h1 id="authTitle">Welcome back.</h1>
+      <p class="muted" id="authSubtitle">Sign in to pick up the conversation.</p>
+      <form id="authForm">
+        <label id="nameWrap" class="field hidden">Full name<input id="nameInput" autocomplete="name" minlength="2" placeholder="Your name"></label>
+        <label class="field">Email address<input id="emailInput" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label class="field">Password<input id="passwordInput" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"></label>
+        <button class="primary full" id="authSubmit">Sign in <span>↗</span></button>
+      </form>
+      <p class="auth-switch" id="authSwitch">New to Pulse? <button type="button" class="text-button" id="switchAuth">Create an account</button></p>
+      <p class="hint">Demo app · Never use a real password here.</p>
+    </section>
+
+    <section id="chatView" class="app hidden">
+      <aside class="sidebar">
+        <header class="side-header"><div class="brand-lockup"><span class="brand-mark small">✦</span><div><b>pulse</b><small>YOUR SPACE, LIVE</small></div></div><button class="icon-btn" id="themeToggle" title="Toggle theme">◐</button></header>
+        <div class="profile-row"><div class="avatar self-avatar" id="myAvatar">U</div><div class="profile-copy"><b id="myName">Your profile</b><small><span class="online-dot"></span> Available</small></div><button class="icon-btn" id="logoutBtn" title="Sign out">↪</button></div>
+        <div class="section-heading"><span>MESSAGES</span><button class="new-chat" id="newChatBtn" title="Start a conversation">＋</button></div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" placeholder="Search conversations…"></label>
+        <div id="conversationList" class="conversation-list"><div class="empty-side">Your conversations will appear here.</div></div>
+        <footer class="side-footer"><span class="pulse-dot"></span> End-to-end-ready architecture <span class="version">BETA</span></footer>
+      </aside>
+      <section class="chat-panel">
+        <header id="chatHeader" class="chat-header"><div class="welcome-art">✳</div><h2>Your conversations,<br><span>without the waiting.</span></h2><p>Choose a conversation or start a new one.</p></header>
+        <section id="conversationPane" class="conversation-pane hidden">
+          <header class="conversation-top"><div class="avatar" id="activeAvatar">C</div><div class="conversation-title"><b id="activeTitle">Conversation</b><small id="activeSubtitle">Messages update in real time</small></div><div class="top-actions"><button class="icon-btn" id="markReadBtn" title="Mark as read">✓✓</button></div></header>
+          <div id="messages" class="messages"><div class="day-chip">TODAY</div></div>
+          <div id="typingLine" class="typing-line"></div>
+          <form id="messageForm" class="composer"><button type="button" id="emojiBtn" class="composer-icon" title="Add emoji">☺</button><textarea id="messageInput" rows="1" maxlength="4000" placeholder="Write a message… Enter to send, Shift+Enter for a new line"></textarea><button type="submit" class="send-btn" title="Send message">↑</button></form>
+          <div class="composer-note">Be kind. Keep it human. <span>↵ to send</span></div>
+        </section>
+        <section id="peoplePane" class="people-pane hidden"><header class="people-top"><button class="icon-btn" id="closePeople">←</button><div><h2>Find your people.</h2><p>Start a direct conversation.</p></div></header><label class="search-box people-search"><span>⌕</span><input id="peopleSearch" placeholder="Search by name or email…"></label><div id="peopleList" class="people-list"></div></section>
+        <div class="connection-status" id="connectionStatus"><span></span> Connecting securely…</div>
+      </section>
+    </section>
+    <div id="toast" class="toast" role="status"></div>
+  </main>
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
