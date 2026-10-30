@@ -1,0 +1,20 @@
+# Node image set karein
+FROM node:18-alpine
+
+# Working directory banayein
+WORKDIR /app
+
+# Package files copy karein
+COPY package*.json ./
+
+# Dependencies install karein
+RUN npm install
+
+# Baqi saara code copy karein
+COPY . .
+
+# Port open karein
+EXPOSE 8080
+
+# App start karne ki command
+CMD ["node", "server.js"]
